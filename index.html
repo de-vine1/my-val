@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Will you be my Valentine?</title>
+
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e63746",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211112",
+                        "cream": "#FDFBF7",
+                        "blush": "#FFECF1",
+                        "charcoal": "#333333",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Main 3D Container -->
+    <div class="book-container">
+        <!-- Background Music -->
+        <audio id="bg-music" src="Jade-LeMac-Constellations.mp3" loop hidden></audio>
+
+        <!-- ================= PAGE 1: THE HOOK ================= -->
+        <div class="page active" id="page-1">
+            <div class="relative flex h-full w-full flex-col overflow-hidden items-center justify-center">
+
+                <!-- Background Orbs -->
+                <div
+                    class="absolute top-[-10%] left-[-10%] h-[50vh] w-[50vh] rounded-full bg-primary/5 blur-[120px] pointer-events-none">
+                </div>
+                <div
+                    class="absolute bottom-[10%] right-[-5%] h-[60vh] w-[60vh] rounded-full bg-[#ffc2cd]/40 blur-[100px] pointer-events-none">
+                </div>
+
+                <!-- Header -->
+                <header class="absolute top-0 left-0 w-full z-20 flex items-center justify-between px-8 py-6">
+                    <div class="flex items-center gap-2">
+                        <div
+                            class="size-8 flex items-center justify-center text-primary bg-white/50 rounded-full backdrop-blur-sm">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">favorite</span>
+                        </div>
+                        <span class="font-serif font-bold text-lg text-charcoal/80">Valentine</span>
+                    </div>
+                </header>
+
+                <!-- Hero Content -->
+                <div class="flex flex-col items-center justify-center gap-8 md:gap-12 animate-float">
+                    <!-- Icon -->
+                    <div class="relative flex items-center justify-center">
+                        <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
+                        <span
+                            class="material-symbols-outlined text-primary text-6xl md:text-8xl relative z-10 drop-shadow-sm"
+                            style="font-variation-settings: 'FILL' 1;">favorite</span>
+                    </div>
+
+                    <!-- Text -->
+                    <div class="text-center max-w-3xl px-4">
+                        <h1
+                            class="text-charcoal text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-[1.1] tracking-tight">
+                            Will you be my <span class="italic text-primary">Valentine?</span>
+                        </h1>
+                        <h2 class="text-charcoal/60 text-sm font-display font-medium uppercase tracking-[0.2em] mt-6">
+                            February 14th · A question for you
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Action -->
+                <div class="absolute bottom-12 w-full flex justify-center">
+                    <button onclick="turnPage('next')"
+                        class="group flex items-center gap-2 px-8 py-4 rounded-full bg-white/50 backdrop-blur-md border border-white/60 hover:bg-white/80 transition shadow-lg hover:shadow-xl hover:-translate-y-1">
+                        <span class="text-sm font-bold uppercase tracking-widest text-charcoal">Begin</span>
+                        <span
+                            class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 2: THE WHY ================= -->
+        <div class="page" id="page-2">
+            <!-- Ambient Background -->
+            <div class="absolute inset-0 w-full h-full -z-10 overflow-hidden">
+                <!-- Base Gradient -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-[#ffe4e6] via-[#fff1f2] to-[#fce7f3] dark:from-[#2a0a0d] dark:via-[#1a0507] dark:to-[#360c12]">
+                </div>
+                <!-- Organic Floating Blobs -->
+                <div
+                    class="absolute top-0 left-0 w-[500px] h-[500px] bg-[#ffcdd2] dark:bg-[#5e1218] rounded-full blur-[120px] opacity-60 animate-float">
+                </div>
+                <div
+                    class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#f8bbd0] dark:bg-[#4a0d13] rounded-full blur-[140px] opacity-50">
+                </div>
+                <!-- Texture Overlay -->
+                <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/noise.png')] mix-blend-overlay pointer-events-none"
+                    data-alt="Subtle noise texture for organic feel"></div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <nav class="absolute top-0 left-0 w-full px-6 py-6 md:px-12 flex items-center justify-between z-20">
+                <div class="flex items-center gap-3">
+                    <div class="text-primary p-2 bg-white/50 dark:bg-white/5 rounded-full backdrop-blur-sm">
+                        <span class="material-symbols-outlined align-middle"
+                            style="font-size: 20px; font-variation-settings: 'FILL' 1;">favorite</span>
+                    </div>
+                    <span class="font-serif font-bold text-lg tracking-wide text-charcoal dark:text-white">Our
+                        Story</span>
+                </div>
+                <!-- Progress Steps -->
+                <div class="hidden sm:flex items-center gap-2">
+                    <div class="h-1.5 w-8 rounded-full bg-primary/20"></div>
+                    <div class="h-1.5 w-8 rounded-full bg-primary shadow-[0_0_10px_rgba(230,55,70,0.5)]"></div>
+                    <div class="h-1.5 w-8 rounded-full bg-primary/20"></div>
+                    <div class="h-1.5 w-8 rounded-full bg-primary/20"></div>
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="flex-grow flex items-center justify-center p-4 md:p-8 z-10 w-full h-full">
+                <!-- Glassmorphism Card -->
+                <div
+                    class="glass-panel w-full max-w-[720px] rounded-lg p-8 md:p-14 relative overflow-hidden transition-all duration-500">
+                    <!-- Decorative top right accent -->
+                    <div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                        <span
+                            class="material-symbols-outlined text-9xl text-primary transform rotate-12">favorite</span>
+                    </div>
+                    <!-- Content Container -->
+                    <div class="relative z-10 flex flex-col h-full">
+                        <!-- Header Section -->
+                        <header class="mb-10 text-center md:text-left">
+                            <div
+                                class="inline-block px-3 py-1 mb-4 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider">
+                                Step 2 of 4
+                            </div>
+                            <h1 class="font-serif text-4xl md:text-6xl font-bold leading-tight mb-2 text-gradient">
+                                Why It's You
+                            </h1>
+                            <p class="text-base md:text-lg text-charcoal/70 dark:text-gray-300 max-w-md md:ml-1">
+                                There are a million reasons, but here are the ones that mean the most.
+                            </p>
+                        </header>
+                        <!-- Romantic Reasons List -->
+                        <ul class="space-y-6 md:space-y-7 mb-12">
+                            <!-- Item 1 -->
+                            <li class="group flex items-start gap-4 md:gap-5">
+                                <div class="mt-1 flex-shrink-0 relative">
+                                    <div
+                                        class="absolute inset-0 bg-primary/20 blur-md rounded-full transform group-hover:scale-150 transition-transform duration-300">
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined relative text-primary text-2xl group-hover:scale-110 transition-transform duration-300"
+                                        style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-xl md:text-2xl font-medium text-charcoal dark:text-white leading-snug group-hover:text-primary transition-colors duration-300">
+                                        You make bad days better
+                                    </span>
+                                    <span class="text-sm text-charcoal/60 dark:text-gray-400 mt-1 font-light">
+                                        Just seeing you smile resets my entire world.
+                                    </span>
+                                </div>
+                            </li>
+                            <!-- Item 2 -->
+                            <li class="group flex items-start gap-4 md:gap-5">
+                                <div class="mt-1 flex-shrink-0 relative">
+                                    <div
+                                        class="absolute inset-0 bg-primary/20 blur-md rounded-full transform group-hover:scale-150 transition-transform duration-300">
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined relative text-primary text-2xl group-hover:scale-110 transition-transform duration-300"
+                                        style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-xl md:text-2xl font-medium text-charcoal dark:text-white leading-snug group-hover:text-primary transition-colors duration-300">
+                                        Your laugh is my favorite sound
+                                    </span>
+                                    <span class="text-sm text-charcoal/60 dark:text-gray-400 mt-1 font-light">
+                                        It's the melody I want to hear for the rest of my life.
+                                    </span>
+                                </div>
+                            </li>
+                            <!-- Item 3 -->
+                            <li class="group flex items-start gap-4 md:gap-5">
+                                <div class="mt-1 flex-shrink-0 relative">
+                                    <div
+                                        class="absolute inset-0 bg-primary/20 blur-md rounded-full transform group-hover:scale-150 transition-transform duration-300">
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined relative text-primary text-2xl group-hover:scale-110 transition-transform duration-300"
+                                        style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-xl md:text-2xl font-medium text-charcoal dark:text-white leading-snug group-hover:text-primary transition-colors duration-300">
+                                        We grow better together
+                                    </span>
+                                </div>
+                            </li>
+                            <!-- Item 4 -->
+                            <li class="group flex items-start gap-4 md:gap-5">
+                                <div class="mt-1 flex-shrink-0 relative">
+                                    <div
+                                        class="absolute inset-0 bg-primary/20 blur-md rounded-full transform group-hover:scale-150 transition-transform duration-300">
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined relative text-primary text-2xl group-hover:scale-110 transition-transform duration-300"
+                                        style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-xl md:text-2xl font-medium text-charcoal dark:text-white leading-snug group-hover:text-primary transition-colors duration-300">
+                                        You understand me without words
+                                    </span>
+                                </div>
+                            </li>
+                            <!-- Item 5 -->
+                            <li class="group flex items-start gap-4 md:gap-5">
+                                <div class="mt-1 flex-shrink-0 relative">
+                                    <div
+                                        class="absolute inset-0 bg-primary/20 blur-md rounded-full transform group-hover:scale-150 transition-transform duration-300">
+                                    </div>
+                                    <span
+                                        class="material-symbols-outlined relative text-primary text-2xl group-hover:scale-110 transition-transform duration-300"
+                                        style="font-variation-settings: 'FILL' 1;">favorite</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-xl md:text-2xl font-medium text-charcoal dark:text-white leading-snug group-hover:text-primary transition-colors duration-300">
+                                        You challenge me to be my best self
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- Action Footer -->
+                        <div
+                            class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 border-t border-charcoal/10 dark:border-white/10 pt-8 mt-auto">
+                            <button onclick="turnPage('prev')"
+                                class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full text-charcoal/70 hover:text-charcoal hover:bg-black/10 transition-colors font-bold text-sm tracking-wide">
+                                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                                <span>Back</span>
+                            </button>
+                            <button onclick="turnPage('next')"
+                                class="w-full sm:w-auto relative group flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-primary text-[#fbf8f9] shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden">
+                                <div
+                                    class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                </div>
+                                <span class="font-bold text-sm tracking-wide relative z-10">Next Reason</span>
+                                <span
+                                    class="material-symbols-outlined text-[18px] relative z-10 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- ================= PAGE 3: THE PITCH (WHY ME) ================= -->
+        <div class="page" id="page-3">
+            <!-- Scoped Background -->
+            <div class="absolute inset-0 w-full h-full -z-10">
+                <div class="absolute inset-0 bg-[#f8f6f6] dark:bg-[#211112]"></div>
+                <!-- Blobs -->
+                <div
+                    class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#ffcdd2] dark:bg-[#5e1218] rounded-full blur-[100px] opacity-60 animate-float">
+                </div>
+                <div
+                    class="absolute bottom-[-10%] right-[-5%] w-[700px] h-[700px] bg-[#f8bbd0] dark:bg-[#4a0d13] rounded-full blur-[120px] opacity-50 animate-float-delayed">
+                </div>
+                <div
+                    class="absolute top-[40%] left-[60%] w-[400px] h-[400px] bg-[#ffebee] dark:bg-[#3e0b10] rounded-full blur-[90px] opacity-40 animate-float">
+                </div>
+                <!-- Texture -->
+                <div
+                    class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/noise.png')] mix-blend-overlay pointer-events-none">
+                </div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <nav class="absolute top-0 left-0 w-full px-6 py-6 md:px-12 flex items-center justify-between z-20">
+                <div class="flex items-center gap-3">
+                    <div class="text-primary p-2 bg-white/50 dark:bg-white/5 rounded-full backdrop-blur-sm shadow-sm">
+                        <span class="material-symbols-outlined align-middle"
+                            style="font-size: 20px; font-variation-settings: 'FILL' 1;">favorite</span>
+                    </div>
+                    <span class="font-serif font-bold text-lg tracking-wide text-charcoal dark:text-white">Our
+                        Story</span>
+                </div>
+                <div class="hidden sm:flex items-center gap-2">
+                    <div class="h-1.5 w-8 rounded-full bg-primary/20"></div>
+                    <div class="h-1.5 w-8 rounded-full bg-primary/20"></div>
+                    <div class="h-1.5 w-8 rounded-full bg-primary shadow-[0_0_10px_rgba(230,55,70,0.5)]"></div>
+                    <div class="h-1.5 w-8 rounded-full bg-primary/20"></div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="flex-grow flex items-center justify-center p-4 md:p-8 z-10 w-full h-full">
+                <div class="w-full max-w-5xl mx-auto flex flex-col items-center">
+                    <header class="text-center mt-6 md:mt-16 mb-4 md:mb-6 relative">
+                        <div
+                            class="inline-block px-3 py-1 mb-4 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider">
+                            Step 3 of 4: The Pitch
+                        </div>
+                        <h1
+                            class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-4 text-charcoal dark:text-white">
+                            Why I'm The One
+                        </h1>
+                        <p class="text-lg md:text-xl text-charcoal/70 dark:text-gray-300 font-medium italic">
+                            A statistical analysis of our future happiness.* <br />
+                            <span class="text-sm text-charcoal/50 not-italic font-normal mt-2 block">(*Margin of error:
+                                0%)</span>
+                        </p>
+                    </header>
+                    <!-- Carousel Container -->
+                    <div class="w-full max-w-4xl px-4 overflow-hidden relative min-w-0 pb-20 pt-20">
+                        <!-- Carousel Track -->
+                        <div id="reasons-track" class="flex transition-transform duration-700 ease-spring"
+                            style="transform: translateX(0%);">
+
+                            <!-- SLIDE 1: The Classics -->
+                            <div
+                                class="w-full min-w-full carousel-slide opacity-100 transition-opacity duration-500 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Card 1 -->
+                                <div
+                                    class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                        <span class="material-symbols-outlined text-3xl"
+                                            style="font-variation-settings: 'FILL' 1;">shield_person</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Loyalty Guarantee</h3>
+                                    <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">Lifetime
+                                        subscription included. No hidden fees, no cancellation policy. I'm basically a
+                                        Golden Retriever in human form.</p>
+                                </div>
+                                <!-- Card 2 -->
+                                <div class="md:translate-y-8">
+                                    <div
+                                        class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group h-full">
+                                        <div
+                                            class="w-16 h-16 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                            <span class="material-symbols-outlined text-3xl"
+                                                style="font-variation-settings: 'FILL' 1;">theaters</span>
+                                        </div>
+                                        <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Date Planner
+                                        </h3>
+                                        <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">Upgrading our
+                                            date nights this year. Better plans, more adventures, and endless memories,
+                                            starting this Valentine's Day.</p>
+                                    </div>
+                                </div>
+                                <!-- Card 3 -->
+                                <div
+                                    class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-brown-50 text-amber-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                        <span class="material-symbols-outlined text-3xl"
+                                            style="font-variation-settings: 'FILL' 1;">coffee</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Master of Cozy</h3>
+                                    <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">Advanced degree in
+                                        blanket forts, more morning snuggles, and providing warmth in cuddles on demand.
+                                    </p>
+                                </div>
+                                <!-- Card 4 -->
+                                <div class="md:translate-y-8">
+                                    <div
+                                        class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group h-full">
+                                        <div
+                                            class="w-16 h-16 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                            <span class="material-symbols-outlined text-3xl"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                        </div>
+                                        <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Master Listner
+                                        </h3>
+                                        <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">My undivided
+                                            attention is yours. I’m here for the rants, the dreams, and every little
+                                            detail in between.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 2: The Practical Perks -->
+                            <div
+                                class="w-full min-w-full carousel-slide opacity-0 transition-opacity duration-500 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Card 5 -->
+                                <div
+                                    class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-red-50 text-red-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                        <span class="material-symbols-outlined text-3xl"
+                                            style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Your Safe Space</h3>
+                                    <p class="text-sm md:text-base text-charcoal/70 leading-relaxed"> I don't just hear
+                                        you; I listen. You have my full attention whenever you need to talk (or vent).
+                                    </p>
+                                </div>
+                                <!-- Card 6 -->
+                                <div class="md:translate-y-8">
+                                    <div
+                                        class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group h-full">
+                                        <div
+                                            class="w-16 h-16 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                            <span class="material-symbols-outlined text-3xl"
+                                                style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+                                        </div>
+                                        <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Personal Chef</h3>
+                                        <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">Specializing in
+                                            everything cooking, breakfast in bed, and experimental dishes that usually
+                                            work out.</p>
+                                    </div>
+                                </div>
+                                <!-- Card 7 -->
+                                <div
+                                    class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-slate-50 text-slate-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                        <span class="material-symbols-outlined text-3xl"
+                                            style="font-variation-settings: 'FILL' 1;">laptop_mac</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Tech Support</h3>
+                                    <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">I'm your go to Guy
+                                        for everything tech, and Ideas, and you know I always turn up</p>
+                                </div>
+                                <!-- Card 8 -->
+                                <div class="md:translate-y-8">
+                                    <div
+                                        class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group h-full">
+                                        <div
+                                            class="w-16 h-16 rounded-full bg-yellow-50 text-yellow-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                            <span class="material-symbols-outlined text-3xl"
+                                                style="font-variation-settings: 'FILL' 1;">sentiment_very_satisfied</span>
+                                        </div>
+                                        <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Personal Stand-Up
+                                        </h3>
+                                        <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">I’m here to
+                                            make you laugh until you cry. Warning: My set includes terrible accents,
+                                            funny dances, and 100% effort.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDE 3: The Fun Stuff -->
+                            <div
+                                class="w-full min-w-full carousel-slide opacity-0 transition-opacity duration-500 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Card 9 -->
+                                <div
+                                    class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                        <span class="material-symbols-outlined text-3xl"
+                                            style="font-variation-settings: 'FILL' 1;">thermostat</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Human Heater</h3>
+                                    <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">Naturally running
+                                        at 100 degrees for your freezing hands. I am basically a portable radiator.</p>
+                                </div>
+                                <!-- Card 10 -->
+                                <div class="md:translate-y-8">
+                                    <div
+                                        class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group h-full">
+                                        <div
+                                            class="w-16 h-16 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                            <span class="material-symbols-outlined text-3xl"
+                                                style="font-variation-settings: 'FILL' 1;">image</span>
+                                        </div>
+                                        <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Meme Curator</h3>
+                                        <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">A specialized
+                                            feed
+                                            of content chosen just for your humor. I always tag you in at least 5 posts
+                                            a
+                                            day.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- Card 11 -->
+                                <div
+                                    class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-blue-50 text-blue-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                        <span class="material-symbols-outlined text-3xl"
+                                            style="font-variation-settings: 'FILL' 1;">diamond</span>
+                                    </div>
+                                    <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Your Rock</h3>
+                                    <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">Steady, consistent,
+                                        and always in your corner. No matter what life throws at us, I’ve got your back.
+                                    </p>
+                                </div>
+                                <!-- Card 12 -->
+                                <div class="md:translate-y-8">
+                                    <div
+                                        class="glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center text-center group h-full">
+                                        <div
+                                            class="w-16 h-16 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                                            <span class="material-symbols-outlined text-3xl"
+                                                style="font-variation-settings: 'FILL' 1;">rate_review</span>
+                                        </div>
+                                        <h3 class="font-serif text-2xl font-bold mb-2 text-charcoal">Forever Reviewer
+                                        </h3>
+                                        <p class="text-sm md:text-base text-charcoal/70 leading-relaxed">Will read your
+                                            drafts, proofread your texts, and hype up your outfits forever and ever.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div
+                        class="mt-8 md:mt-12 flex flex-col-reverse sm:flex-row items-center justify-center gap-6 w-full max-w-md">
+                        <button onclick="prevReason()"
+                            class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-full text-charcoal/70 hover:text-charcoal hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10 transition-colors font-bold text-sm tracking-wide">
+                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                            <span>Back</span>
+                        </button>
+                        <button id="next-reason-btn" onclick="nextReason()"
+                            class="w-full sm:w-auto relative group flex items-center justify-center gap-3 px-10 py-4 rounded-full bg-primary text-[#fbf8f9] shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            </div>
+                            <span id="next-reason-text" class="font-bold text-base tracking-wide relative z-10">Next
+                                Reason</span>
+                            <span
+                                class="material-symbols-outlined text-[20px] relative z-10 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- ================= PAGE 4: THE QUESTION ================= -->
+        <div class="page" id="page-4">
+            <div class="relative flex h-full w-full flex-col overflow-hidden items-center justify-center p-4">
+
+                <!-- Background decoration -->
+                <div class="absolute inset-0 z-0 pointer-events-none">
+                    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-pink-200/40 rounded-full blur-[100px] mix-blend-multiply animate-float"
+                        style="animation-delay: 0s;"></div>
+                    <div class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-red-100/40 rounded-full blur-[120px] mix-blend-multiply animate-float"
+                        style="animation-delay: -2s;"></div>
+                    <div class="absolute top-[40%] left-[60%] w-[30vw] h-[30vw] bg-rose-200/30 rounded-full blur-[80px] mix-blend-multiply animate-float"
+                        style="animation-delay: -4s;"></div>
+                </div>
+
+                <main class="relative z-10 text-center space-y-10 animate-float">
+                    <div>
+                        <h1
+                            class="font-serif italic text-7xl sm:text-8xl md:text-9xl font-semibold text-charcoal leading-none">
+                            So...</h1>
+                        <p class="text-2xl md:text-3xl text-charcoal/70 font-medium mt-6">Will you be my Valentine?</p>
+                    </div>
+
+                    <div class="py-8">
+                        <div class="relative size-32 mx-auto flex items-center justify-center">
+                            <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl scale-150 animate-pulse">
+                            </div>
+                            <span class="material-symbols-outlined text-8xl text-primary animate-bounce"
+                                style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div id="button-container" class="flex flex-col items-center gap-6 w-full max-w-xs mx-auto">
+                        <!-- YES -->
+                        <button id="yes-btn"
+                            class="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-20 bg-primary text-white text-2xl font-bold tracking-wide shadow-xl shadow-primary/30 hover:scale-105 hover:bg-primary-dark transition-all duration-300">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700">
+                            </div>
+                            <span class="flex items-center gap-3 relative z-10">
+                                YES! <span class="material-symbols-outlined text-3xl"
+                                    style="font-variation-settings: 'FILL' 1;">favorite</span>
+                            </span>
+                        </button>
+
+                        <!-- NO (Runaway) -->
+                        <button id="no-btn"
+                            class="runaway-btn flex items-center justify-center gap-2 px-6 py-2 rounded-full border border-rose-200 text-rose-400 font-semibold hover:bg-rose-50 hover:text-rose-600 transition-colors">
+                            <span>No</span>
+                            <span class="material-symbols-outlined text-lg">sentiment_dissatisfied</span>
+                        </button>
+                    </div>
+                </main>
+
+                <!-- Footer Nav (Only Back) -->
+                <div class="absolute bottom-8 left-8">
+                    <button onclick="turnPage('prev')"
+                        class="flex items-center gap-2 px-6 py-3 rounded-full text-charcoal/70 hover:bg-black/5 transition font-bold text-sm">
+                        <span class="material-symbols-outlined text-lg">arrow_back</span> Back
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 5: SUCCESS ================= -->
+        <div class="page upcoming" id="page-5">
+            <div class="relative flex h-full w-full flex-col overflow-hidden items-center justify-center">
+
+                <!-- Background Elements -->
+                <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div
+                        class="absolute top-[20%] left-[20%] w-[50vw] h-[50vw] bg-red-100/50 rounded-full blur-[100px] mix-blend-multiply animate-pulse">
+                    </div>
+                    <div class="absolute bottom-[20%] right-[20%] w-[50vw] h-[50vw] bg-pink-100/50 rounded-full blur-[100px] mix-blend-multiply animate-pulse"
+                        style="animation-delay: 1s"></div>
+                </div>
+
+                <div
+                    class="flex flex-col items-center justify-center h-full text-center animate-in zoom-in duration-500 relative z-10">
+                    <span class="material-symbols-outlined text-9xl text-primary mb-6 animate-bounce">favorite</span>
+                    <h1 class="font-serif text-5xl md:text-7xl font-bold text-primary mb-4">You made me so happy! ❤️
+                    </h1>
+                    <h2 class="font-serif text-3xl md:text-5xl font-bold text-rose-500 mb-4">I Love YOU! ❤️</h2>
+                    <p class="text-xl text-charcoal/80">We'd. Have. D. Best. Valentine. Ever.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script -->
+    <script src="script.js?v=carousel"></script>
+</body>
+
+</html>
