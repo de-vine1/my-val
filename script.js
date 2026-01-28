@@ -272,9 +272,18 @@ function initFloatingBackground() {
 }
 
 // Initialize on load
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
+    // Ensure initial classes are set first
     updatePageClasses();
     initFloatingBackground();
+
+    // Hide preloader after a short delay for smoothness
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.classList.add('hidden');
+        }
+    }, 500);
 
     // === Background Music Logic ===
     const music = document.getElementById('bg-music');

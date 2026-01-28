@@ -224,3 +224,120 @@ body {
 .ease-spring {
     transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: radial-gradient(circle at 50% 50%, #ffe6e9 0%, #fbd0d6 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.spinner-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+}
+
+.spinner-rotator {
+    width: 100%;
+    height: 100%;
+    animation: spin 3s linear infinite;
+    position: relative;
+}
+
+.spinner-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Adjust origin slightly for better orbit */
+    transform-origin: 50% 50%;
+}
+
+/* Position icons in a circle */
+.spinner-icon:nth-child(1) {
+    transform: rotate(0deg) translateY(-35px) rotate(0deg);
+    color: #e63746;
+}
+
+.spinner-icon:nth-child(2) {
+    transform: rotate(72deg) translateY(-35px) rotate(-72deg);
+    color: #ec4899;
+}
+
+.spinner-icon:nth-child(3) {
+    transform: rotate(144deg) translateY(-35px) rotate(-144deg);
+    color: #f43f5e;
+}
+
+.spinner-icon:nth-child(4) {
+    transform: rotate(216deg) translateY(-35px) rotate(-216deg);
+    color: #db2777;
+}
+
+.spinner-icon:nth-child(5) {
+    transform: rotate(288deg) translateY(-35px) rotate(-288deg);
+    color: #be185d;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-heart {
+    font-size: 3rem;
+    color: var(--primary);
+    animation: heart-beat 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 6px rgba(230, 55, 70, 0.3));
+}
+
+@keyframes heart-beat {
+    0% {
+        transform: scale(0.95);
+    }
+
+    5% {
+        transform: scale(1.1);
+    }
+
+    39% {
+        transform: scale(0.85);
+    }
+
+    45% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(0.9);
+    }
+}
