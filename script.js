@@ -107,13 +107,38 @@ function resetNoButton() {
     }
 }
 
-// === "Yes" Button Logic (Confetti) ===
+// === "Yes" Button Logic (Confetti + Email) ===
 const yesBtn = document.getElementById('yes-btn');
 if (yesBtn) {
     yesBtn.addEventListener('click', () => {
         triggerConfetti();
         showSuccessMessage();
+        sendNotificationEmail();
     });
+}
+
+function sendNotificationEmail() {
+    fetch('https://email-service-theta-six.vercel.app/api/send-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            to: "aududivine@gmail.com",
+            subject: "She Said YES! 💖",
+            html: "<div style='font-family: sans-serif; text-align: center; padding: 20px; background-color: #ffe6e9; border-radius: 10px;'><h1>💖 She said YES! 💖</h1><p style='font-size: 18px;'>Nachi just clicked the <strong>YES</strong> button!</p><p>Time to celebrate! 🥂</p></div>"
+        })
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log("Email sent successfully!");
+            } else {
+                console.error("Failed to send email.");
+            }
+        })
+        .catch(error => {
+            console.error("Error sending email:", error);
+        });
 }
 
 function triggerConfetti() {
